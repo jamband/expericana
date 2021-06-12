@@ -1,0 +1,48 @@
+import Link from "next/link";
+import { Loading } from "~/components/loading";
+import type { _Props } from "./types";
+
+export const Component: React.VFC<_Props> = (props) => (
+  <div style={{ display: props.display }}>
+    {props.is1x1Ratio ? (
+      <div className="col-md-8 col-lg-6 offset-md-2 offset-lg-3">
+        <div className="ratio ratio-1x1">
+          {props.player.loading ? <Loading /> : null}
+          <iframe
+            key={props.player.id}
+            className="rounded"
+            src={props.src}
+            title={props.player.type}
+            onLoad={() => props.setLoading(false)}
+            allowFullScreen
+          />
+        </div>
+      </div>
+    ) : (
+      <div className="ratio ratio-16x9">
+        {props.player.loading ? <Loading /> : null}
+        <iframe
+          key={props.player.id}
+          className="rounded"
+          src={props.src}
+          title={props.player.type}
+          onLoad={() => props.setLoading(false)}
+          allowFullScreen
+        />
+      </div>
+    )}
+    <h5 className="mt-3 mb-2 text-center fw-bold">
+      {props.player.title}{" "}
+      <small className="text-muted">via {props.player.provider}</small>
+    </h5>
+    <p className="text-center">
+      <Link href={props.backTo}>
+        <a>Back to {props.backToText}</a>
+      </Link>{" "}
+      <span className="mx-1 text-muted">or</span>{" "}
+      <Link href="/">
+        <a>Recent favorites</a>
+      </Link>
+    </p>
+  </div>
+);

@@ -1,0 +1,88 @@
+@use "sass:color";
+
+// Color system
+$primary:       #cc6055;
+$secondary:     #919191;
+$light:         #f8f9fa;
+$dark:          #2e2e2e;
+
+$colors: (
+);
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "light":      $light,
+  "dark":       $dark,
+);
+
+// Options
+$enable-caret:              false;
+$enable-shadows:            true;
+$enable-smooth-scroll:      false;
+$enable-validation-icons:   false;
+
+// Spacing
+$spacer: 1rem;
+
+$spacers: (
+  0: 0,
+  1: $spacer / 4,
+  2: $spacer / 2,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 4.5,
+  7: $spacer * 6,
+  8: $spacer * 7.5,
+);
+
+// Body
+$body-bg:     #222;
+$body-color:  #ced4da;
+
+// Links
+$link-color:                              $primary;
+$link-decoration:                         none;
+$link-hover-color:                        color.scale($link-color, $lightness: -25%);
+
+// Grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px
+);
+
+// Components
+$border-radius:               0.25rem;
+$box-shadow-sm:               0 0.125rem 0.25rem color.scale(black, $lightness: 10%);
+
+// Typography
+$font-family-sans-serif:      "Source Sans Pro", "Yu Gothic", YuGothic sans-serif;
+$text-muted:                  #5e5e5e;
+$hr-border-color:             color.scale(white, $lightness: 0%, $alpha: -92%);
+$hr-margin-y:                 $spacer / 2;
+$small-font-size:             0.675em;
+
+// Forms
+$input-bg:                              color.scale($body-bg, $lightness: -10%);
+$input-disabled-bg:                     color.scale($body-bg, $lightness: 10%);
+$input-color:                           color.scale($body-color, $lightness: -25%);
+$input-border-color:                    $dark;
+
+// Navbar
+$navbar-nav-link-padding-x:         0.8rem;
+$navbar-dark-hover-color:           $light;
+$navbar-dark-toggler-border-color:  none;
+$navbar-toggler-font-size:          1rem;
+
+// Dropdowns
+$dropdown-bg:                       $body-bg;
+$dropdown-link-color:               $secondary;
+$dropdown-link-hover-color:         $light;
+$dropdown-link-hover-bg:            $dark;
+$dropdown-divider-bg:               $secondary;
+
+// Close
+$btn-close-color:            $light;
