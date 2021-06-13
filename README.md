@@ -9,4 +9,4 @@
 
 ## License
 
-Musicaz is licensed under the MIT license.
+Expericana is licensed under the MIT license.

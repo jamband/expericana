@@ -16,7 +16,7 @@ export default function View() {
             Twitter
           </LinkExternal>{" "}
           or{" "}
-          <LinkExternal href="https://github.com/jamband/musicaz/issues">
+          <LinkExternal href="https://github.com/jamband/expericana/issues">
             <FontAwesomeIcon icon={["fab", "github"]} fixedWidth />
             GitHub
           </LinkExternal>{" "}
