@@ -1,8 +1,6 @@
 # Expericana
 
-Expericana is Next.js edition of [plusarchive.com](https://github.com/jamband/plusarchive.com).
-
-[https://musicaz.vercel.app](https://expericana.pages.dev)
+[Expericana](https://expericana.vercel.app) is Next.js edition of [plusarchive.com](https://github.com/jamband/plusarchive.com).
 
 ## Related repositories
 
