@@ -27,7 +27,6 @@ const links = [
 const moreLinks = [
   { pathname: "/about", text: "About" },
   { pathname: "/contact", text: "Contact" },
-  { pathname: "/privacy", text: "Privacy" },
 ];
 
 afterEach(() => {

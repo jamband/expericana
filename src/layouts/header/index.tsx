@@ -23,7 +23,6 @@ export const Header: React.VFC = () => {
   const moreLinks = [
     { href: "/about", text: "About" },
     { href: "/contact", text: "Contact" },
-    { href: "/privacy", text: "Privacy" },
   ];
 
   const linkClass = (pathname: string) => {
