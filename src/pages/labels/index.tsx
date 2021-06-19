@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GetServerSideProps } from "next";
+import type { GetStaticProps } from "next";
 import Link from "next/link";
 import { SearchLabelsCountries } from "~/components/search-labels-countries";
 import { SearchLabelsTags } from "~/components/search-labels-tags";
 import { LinkBrandIcon } from "~/components/link-brand-icon";
-import { Pagination } from "~/components/pagination";
+import { Pagination } from "~/components/pagination-static";
 import { TotalCount } from "~/components/total-count";
 import { Page } from "~/layouts/page";
 import type { Label } from "~/types/label";
@@ -17,12 +17,10 @@ type Props = {
   pagination: PaginationProp;
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async (
-  context
-) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const response = await http({
-    url: context.query.q ? "/labels/search?expand=tags" : "/labels?expand=tags",
-    params: context.query,
+    url: "/labels?expand=tags",
+    params,
   });
 
   const labels = await response.json();
@@ -73,13 +71,7 @@ export default function View(props: Props) {
                 <section>
                   <span className="me-2">Tags:</span>
                   {label.tags.map((tag, index) => (
-                    <Link
-                      key={index}
-                      href={{
-                        pathname: "/labels",
-                        query: { tag: tag.name },
-                      }}
-                    >
+                    <Link key={index} href={`/labels/tags/${tag.name}`}>
                       <a className="tag">{tag.name}</a>
                     </Link>
                   ))}

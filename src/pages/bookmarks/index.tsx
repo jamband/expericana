@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GetServerSideProps } from "next";
+import type { GetStaticProps } from "next";
 import Link from "next/link";
 import { LinkBrandIcon } from "~/components/link-brand-icon";
-import { Pagination } from "~/components/pagination";
+import { Pagination } from "~/components/pagination-static";
 import { SearchForm } from "~/components/search-form";
 import { SearchBookmarksCountries } from "~/components/search-bookmarks-countries";
 import { SearchBookmarksTags } from "~/components/search-bookmarks-tags";
@@ -17,12 +17,10 @@ type Props = {
   pagination: PaginationProp;
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const response = await http({
-    url: context.query.q
-      ? "/bookmarks/search?expand=tags"
-      : "/bookmarks?expand=tags",
-    params: context.query,
+    url: "/bookmarks?expand=tags",
+    params,
   });
 
   const bookmarks = await response.json();
@@ -73,13 +71,7 @@ export default function View(props: Props) {
                 <section>
                   <span className="me-2">Tags:</span>
                   {bookmark.tags.map((tag, index) => (
-                    <Link
-                      key={index}
-                      href={{
-                        pathname: "/bookmarks",
-                        query: { tag: tag.name },
-                      }}
-                    >
+                    <Link key={index} href={`/bookmarks/tags/${tag.name}`}>
                       <a className="tag">{tag.name}</a>
                     </Link>
                   ))}

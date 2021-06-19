@@ -50,9 +50,8 @@ test("error", () => {
   });
 
   render(<SearchBookmarksTags />);
-  const listitem = screen.getAllByRole("listitem");
-  expect(listitem).toHaveLength(2);
-  expect(listitem[1]).toHaveTextContent("Request failure");
+  const listitem = screen.getByRole("listitem");
+  expect(listitem).toHaveTextContent("Request failure");
 });
 
 test("data", () => {
@@ -69,12 +68,12 @@ test("data", () => {
 
   render(<SearchBookmarksTags />);
   const listitem = screen.getAllByRole("listitem");
-  expect(listitem).toHaveLength(4);
+  expect(listitem).toHaveLength(3);
 
-  expect(listitem[1]).toHaveTextContent("Foo");
-  expect(listitem[1]).toHaveAttribute("href", "/bookmarks?tag=Foo");
-  expect(listitem[2]).toHaveTextContent("Bar");
-  expect(listitem[2]).toHaveAttribute("href", "/bookmarks?tag=Bar");
-  expect(listitem[3]).toHaveTextContent("Baz");
-  expect(listitem[3]).toHaveAttribute("href", "/bookmarks?tag=Baz");
+  expect(listitem[0]).toHaveTextContent("Foo");
+  expect(listitem[0]).toHaveAttribute("href", "/bookmarks/tags/Foo");
+  expect(listitem[1]).toHaveTextContent("Bar");
+  expect(listitem[1]).toHaveAttribute("href", "/bookmarks/tags/Bar");
+  expect(listitem[2]).toHaveTextContent("Baz");
+  expect(listitem[2]).toHaveAttribute("href", "/bookmarks/tags/Baz");
 });

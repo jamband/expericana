@@ -50,9 +50,8 @@ test("error", () => {
   });
 
   render(<SearchStoresCountries />);
-  const listitem = screen.getAllByRole("listitem");
-  expect(listitem).toHaveLength(2);
-  expect(listitem[1]).toHaveTextContent("Request failure");
+  const listitem = screen.getByRole("listitem");
+  expect(listitem).toHaveTextContent("Request failure");
 });
 
 test("data", () => {
@@ -69,12 +68,12 @@ test("data", () => {
 
   render(<SearchStoresCountries />);
   const listitem = screen.getAllByRole("listitem");
-  expect(listitem).toHaveLength(4);
+  expect(listitem).toHaveLength(3);
 
-  expect(listitem[1]).toHaveTextContent("Foo");
-  expect(listitem[1]).toHaveAttribute("href", "/stores?country=Foo");
-  expect(listitem[2]).toHaveTextContent("Bar");
-  expect(listitem[2]).toHaveAttribute("href", "/stores?country=Bar");
-  expect(listitem[3]).toHaveTextContent("Baz");
-  expect(listitem[3]).toHaveAttribute("href", "/stores?country=Baz");
+  expect(listitem[0]).toHaveTextContent("Foo");
+  expect(listitem[0]).toHaveAttribute("href", "/stores/countries/Foo");
+  expect(listitem[1]).toHaveTextContent("Bar");
+  expect(listitem[1]).toHaveAttribute("href", "/stores/countries/Bar");
+  expect(listitem[2]).toHaveTextContent("Baz");
+  expect(listitem[2]).toHaveAttribute("href", "/stores/countries/Baz");
 });

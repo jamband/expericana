@@ -1,0 +1,55 @@
+@import "../../styles/variables";
+@import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
+
+.first {
+  border-bottom-left-radius: $border-radius;
+  border-top-left-radius: $border-radius;
+}
+
+.last {
+  border-bottom-right-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+}
+
+.touch {
+  &:hover {
+    color: $link-color;
+  }
+
+  &:active {
+    background-color: rgba(white, 0.05);
+    color: $link-hover-color;
+  }
+}
+
+.link {
+  &:hover {
+    background-color: rgba(white, 0.05);
+    color: $link-hover-color;
+  }
+}
+
+.disabled {
+  color: var(--bs-secondary);
+  pointer-events: none;
+
+  &:hover {
+    color: var(--bs-secondary);
+  }
+}
+
+.information {
+  color: var(--bs-secondary);
+  position: relative;
+  z-index: -1;
+
+  @include media-breakpoint-down(sm) {
+    bottom: 2.4em;
+    font-size: 75%;
+  }
+
+  @include media-breakpoint-up(sm) {
+    bottom: 2.2em;
+    font-size: 85%;
+  }
+}

@@ -8,9 +8,7 @@ export const SearchForm: React.VFC<Props> = (props) => {
   const search = router.query.q || "";
   const [value, setValue] = useState(search);
 
-  const disabled = !["/tracks", "/labels", "/stores", "/bookmarks"].includes(
-    router.pathname
-  );
+  const disabled = !["/tracks"].includes(router.pathname);
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

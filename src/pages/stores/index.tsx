@@ -1,26 +1,26 @@
-import { GetServerSideProps } from "next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { GetStaticProps } from "next";
 import Link from "next/link";
 import { SearchStoresCountries } from "~/components/search-stores-countries";
 import { SearchStoresTags } from "~/components/search-stores-tags";
 import { LinkBrandIcon } from "~/components/link-brand-icon";
-import { Pagination } from "~/components/pagination";
+import { Pagination } from "~/components/pagination-static";
 import { SearchForm } from "~/components/search-form";
 import { TotalCount } from "~/components/total-count";
 import { Page } from "~/layouts/page";
 import type { Pagination as PaginationProp } from "~/types/pagination";
 import type { Store } from "~/types/store";
 import { http } from "~/utils/http";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Props = {
   stores: Store[];
   pagination: PaginationProp;
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const response = await http({
-    url: context.query.q ? "/stores/search?expand=tags" : "/stores?expand=tags",
-    params: context.query,
+    url: "/stores?expand=tags",
+    params,
   });
 
   const stores = await response.json();
@@ -71,10 +71,7 @@ export default function View(props: Props) {
                 <section>
                   <span className="me-2">Tags:</span>
                   {store.tags.map((tag, index) => (
-                    <Link
-                      key={index}
-                      href={{ pathname: "/stores", query: { tag: tag.name } }}
-                    >
+                    <Link key={index} href={`/stores/tags/${tag.name}`}>
                       <a className="tag">{tag.name}</a>
                     </Link>
                   ))}

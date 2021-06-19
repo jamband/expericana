@@ -50,9 +50,8 @@ test("error", () => {
   });
 
   render(<SearchLabelsTags />);
-  const listitem = screen.getAllByRole("listitem");
-  expect(listitem).toHaveLength(2);
-  expect(listitem[1]).toHaveTextContent("Request failure");
+  const listitem = screen.getByRole("listitem");
+  expect(listitem).toHaveTextContent("Request failure");
 });
 
 test("data", () => {
@@ -69,12 +68,12 @@ test("data", () => {
 
   render(<SearchLabelsTags />);
   const listitem = screen.getAllByRole("listitem");
-  expect(listitem).toHaveLength(4);
+  expect(listitem).toHaveLength(3);
 
-  expect(listitem[1]).toHaveTextContent("Foo");
-  expect(listitem[1]).toHaveAttribute("href", "/labels?tag=Foo");
-  expect(listitem[2]).toHaveTextContent("Bar");
-  expect(listitem[2]).toHaveAttribute("href", "/labels?tag=Bar");
-  expect(listitem[3]).toHaveTextContent("Baz");
-  expect(listitem[3]).toHaveAttribute("href", "/labels?tag=Baz");
+  expect(listitem[0]).toHaveTextContent("Foo");
+  expect(listitem[0]).toHaveAttribute("href", "/labels/tags/Foo");
+  expect(listitem[1]).toHaveTextContent("Bar");
+  expect(listitem[1]).toHaveAttribute("href", "/labels/tags/Bar");
+  expect(listitem[2]).toHaveTextContent("Baz");
+  expect(listitem[2]).toHaveAttribute("href", "/labels/tags/Baz");
 });

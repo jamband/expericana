@@ -14,7 +14,7 @@ beforeEach(() => {
 });
 
 test("disabled", () => {
-  ["/tracks", "/labels", "/stores", "/bookmarks"].map((pathname) => {
+  ["/tracks"].map((pathname) => {
     router.mockReturnValue({
       pathname,
       query: {},
