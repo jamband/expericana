@@ -7,6 +7,7 @@ export const Component: React.VFC<_Props> = (props) => (
   <div className={styles.card}>
     <Link href={`/tracks/${props.id}`}>
       <a className={`${styles.imagewrap} ${props.ratioSelector}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className={`${styles.image} lazyload`}
           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNQqgcAAMYAogMXSH0AAAAASUVORK5CYII="

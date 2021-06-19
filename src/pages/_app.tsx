@@ -8,7 +8,7 @@ import { Layout } from "~/layouts/layout";
 import { RegisterFontAwesomeIcons } from "~/utils/fontawesome";
 import "~/styles/app.scss";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   RegisterFontAwesomeIcons();
 
   const queryClientRef = useRef<QueryClient>();
