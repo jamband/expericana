@@ -67,11 +67,11 @@ export default function View(props: Props) {
                   {bookmark.country}
                 </section>
                 <section className="mb-1">
-                  <span className="me-2">Link:</span>
+                  <span className="me-2">Links:</span>
                   <LinkBrandIcon link={bookmark.link} />
                 </section>
                 <section>
-                  <span className="me-2">Tag:</span>
+                  <span className="me-2">Tags:</span>
                   {bookmark.tags.map((tag, index) => (
                     <Link
                       key={index}

@@ -65,11 +65,11 @@ export default function View(props: Props) {
                   {store.country}
                 </section>
                 <section className="mb-1">
-                  <span className="me-2">Link:</span>
+                  <span className="me-2">Links:</span>
                   <LinkBrandIcon link={store.link} />
                 </section>
                 <section>
-                  <span className="me-2">Tag:</span>
+                  <span className="me-2">Tags:</span>
                   {store.tags.map((tag, index) => (
                     <Link
                       key={index}
