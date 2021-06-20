@@ -1,5 +1,5 @@
 /** @jest-environment jsdom */
-import { cleanup, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { useRouter } from "next/router";
 import "~/utils/fontawesome-mock";
 import { SearchTracksProviders } from ".";
@@ -10,74 +10,38 @@ jest.mock("next/router", () => ({
 
 const router = useRouter as jest.Mock;
 
-jest.mock("~/constants/music", () => ({
-  MUSIC_PROVIDERS: ["Foo", "Bar", "Baz"],
-}));
-
 beforeEach(() => {
   router.mockReset();
 });
 
-test("label", () => {
+test("data", () => {
   router.mockReturnValue({
+    pathname: "/tracks",
     query: {},
   });
 
   render(<SearchTracksProviders />);
-  expect(screen.getByRole("button")).toHaveTextContent("Providers");
-  cleanup();
+  const listitem = screen.getAllByRole("listitem");
+  expect(listitem).toHaveLength(4);
 
-  router.mockReturnValue({
-    query: { provider: "Foo" },
-  });
-
-  render(<SearchTracksProviders />);
-  expect(screen.getByRole("button")).toHaveTextContent("Foo");
-});
-
-test("reset link", () => {
-  router.mockReturnValue({
-    pathname: "/tracks",
-    query: { provider: "Foo", genre: "Bar", page: 10 },
-  });
-
-  render(<SearchTracksProviders />);
-  expect(screen.getByText("Reset")).toHaveAttribute(
+  expect(listitem[0]).toHaveTextContent("Bandcamp");
+  expect(listitem[0]).toHaveAttribute(
     "href",
-    "/tracks?genre=Bar"
+    "/tracks/providers/Bandcamp/pages/1"
   );
-});
-
-test("item link: Foo on /tracks", () => {
-  router.mockReturnValue({
-    pathname: "/tracks",
-    query: {},
-  });
-
-  render(<SearchTracksProviders />);
-  const [, foo] = screen.getAllByRole("listitem");
-  expect(foo).toHaveAttribute("href", "/tracks?provider=Foo");
-  cleanup();
-});
-
-test("item link: Foo on /tracks?page=10", () => {
-  router.mockReturnValue({
-    pathname: "/tracks",
-    query: { page: 10 },
-  });
-
-  render(<SearchTracksProviders />);
-  const [, foo] = screen.getAllByRole("listitem");
-  expect(foo).toHaveAttribute("href", "/tracks?provider=Foo");
-});
-
-test("item link: Bar on /tracks?genre=Foo", () => {
-  router.mockReturnValue({
-    pathname: "/tracks",
-    query: { genre: "Foo" },
-  });
-
-  render(<SearchTracksProviders />);
-  const [, , bar] = screen.getAllByRole("listitem");
-  expect(bar).toHaveAttribute("href", "/tracks?genre=Foo&provider=Bar");
+  expect(listitem[1]).toHaveTextContent("SoundCloud");
+  expect(listitem[1]).toHaveAttribute(
+    "href",
+    "/tracks/providers/SoundCloud/pages/1"
+  );
+  expect(listitem[2]).toHaveTextContent("Vimeo");
+  expect(listitem[2]).toHaveAttribute(
+    "href",
+    "/tracks/providers/Vimeo/pages/1"
+  );
+  expect(listitem[3]).toHaveTextContent("YouTube");
+  expect(listitem[3]).toHaveAttribute(
+    "href",
+    "/tracks/providers/YouTube/pages/1"
+  );
 });

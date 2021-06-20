@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GetServerSideProps } from "next";
+import type { GetStaticProps } from "next";
 import Link from "next/link";
 import { TrackCard } from "~/components/track-card";
 import { TotalCount } from "~/components/total-count";
 import { SearchTracksGenres } from "~/components/search-tracks-genres";
 import { SearchTracksProviders } from "~/components/search-tracks-providers";
-import { Pagination } from "~/components/pagination";
+import { Pagination } from "~/components/pagination-static";
 import { useCardLayout } from "~/hooks/card-layout";
 import { Page } from "~/layouts/page";
 import type { Pagination as PaginationProps } from "~/types/pagination";
@@ -15,31 +15,20 @@ import { http } from "~/utils/http";
 type Props = {
   tracks: Track[];
   pagination: PaginationProps;
-  genres: string[];
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async (
-  context
-) => {
-  const tracksResponse = await http({
-    url: context.query.q
-      ? "/tracks/search?expand=genres"
-      : "/tracks?expand=genres",
-    params: context.query,
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  const response = await http({
+    url: "/tracks?expand=genres",
+    params,
   });
 
-  const genresResponse = await http({
-    url: "/tracks/genres",
-  });
-
-  const tracks = await tracksResponse.json();
-  const genres = await genresResponse.json();
+  const tracks = await response.json();
 
   return {
     props: {
       tracks: tracks.items,
       pagination: tracks._meta,
-      genres,
     },
   };
 };
@@ -75,11 +64,11 @@ export default function View(props: Props) {
               title={track.title}
               footer={track.created_at}
             >
-              <Link href={`/tracks?provider=${track.provider}`}>
+              <Link href={`/tracks/providers/${track.provider}/pages/1`}>
                 <a className="tag">{track.provider}</a>
               </Link>
               {track.genres.map((genre, index) => (
-                <Link key={index} href={`/tracks?genre=${genre.name}`}>
+                <Link key={index} href={`/tracks/genres/${genre.name}/pages/1`}>
                   <a className="tag">{genre.name}</a>
                 </Link>
               ))}
