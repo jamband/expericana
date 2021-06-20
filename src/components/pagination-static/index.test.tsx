@@ -77,7 +77,7 @@ test("current page: last", () => {
 
   expect(first).toHaveAttribute("href", "/foo/pages/1");
   expect(previous).toHaveAttribute("href", "/foo/pages/9");
-  expect(next).toHaveAttribute("href", "/foo/pages/11");
+  expect(next).toHaveAttribute("href", "/foo/pages/10");
   expect(last).toHaveAttribute("href", "/foo/pages/10");
 
   expect(screen.getByText("10/10")).toBeInTheDocument();

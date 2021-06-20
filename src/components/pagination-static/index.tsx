@@ -6,6 +6,7 @@ import type { Props, Part } from "./types";
 export const Pagination: React.VFC<Props> = (props) => {
   const router = useRouter();
   const { hasTouchScreen } = useHasTouchScreen();
+  const { currentPage, total } = props;
 
   let className = "text-center";
   if (props.className) {
@@ -18,17 +19,17 @@ export const Pagination: React.VFC<Props> = (props) => {
 
   const disabled = (part: Part) => {
     return ["first", "previous"].includes(part)
-      ? props.currentPage < 2
-      : props.currentPage >= props.total;
+      ? currentPage < 2
+      : currentPage >= total;
   };
 
   const link = (part: Part) => {
     let page = 1;
 
-    if (part === "previous" && props.currentPage !== 1) {
-      page = props.currentPage - 1;
+    if (part === "previous" && currentPage !== 1) {
+      page = currentPage - 1;
     } else if (part === "next") {
-      page = props.currentPage + 1;
+      page = currentPage === total ? total : currentPage + 1;
     } else if (part === "last") {
       page = props.total;
     }
