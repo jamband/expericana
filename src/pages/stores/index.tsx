@@ -1,13 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticProps } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { LinkBrandIcon } from "~/components/link-brand-icon";
+import { Pagination } from "~/components/pagination";
 import { SearchForm } from "~/components/search-form";
 import { SearchStoresCountries } from "~/components/search-stores-countries";
 import { SearchStoresTags } from "~/components/search-stores-tags";
-import { LinkBrandIcon } from "~/components/link-brand-icon";
-import { Pagination } from "~/components/pagination";
-import { Pagination as PaginationSG } from "~/components/pagination-static";
 import { TotalCount } from "~/components/total-count";
 import { Page } from "~/layouts/page";
 import type { Pagination as PaginationProp } from "~/types/pagination";
@@ -19,7 +17,7 @@ type Props = {
   pagination: PaginationProp;
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const response = await http({
     url: "/stores?expand=tags",
     params,
@@ -36,8 +34,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function View(props: Props) {
-  const { pathname } = useRouter();
-
   return (
     <Page title="Stores">
       <div className="row">
@@ -84,19 +80,11 @@ export default function View(props: Props) {
               </article>
             ))}
           </div>
-          {pathname === "/stores/search" ? (
-            <Pagination
-              className="mt-2 mt-sm-4"
-              currentPage={props.pagination.currentPage}
-              total={props.pagination.pageCount}
-            />
-          ) : (
-            <PaginationSG
-              className="mt-2 mt-sm-4"
-              currentPage={props.pagination.currentPage}
-              total={props.pagination.pageCount}
-            />
-          )}
+          <Pagination
+            className="mt-2 mt-sm-4"
+            currentPage={props.pagination.currentPage}
+            total={props.pagination.pageCount}
+          />
         </div>
       </div>
     </Page>

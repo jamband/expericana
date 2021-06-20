@@ -12,5 +12,5 @@ export type _Props = Props & {
   hasTouchScreen: boolean;
   blur: (event: React.MouseEvent<HTMLDivElement>) => void;
   disabled: (part: Part) => boolean;
-  link: (page: number) => { query: ParsedUrlQueryInput };
+  link: (part: Part) => { pathname: string; query: ParsedUrlQueryInput };
 };

@@ -6,7 +6,7 @@ import type { _Props } from "./types";
 export const Component: React.VFC<_Props> = (props) => (
   <nav className={props.className} aria-label="Page navigation">
     <div className="d-flex" onClick={props.blur} role="presentation">
-      <Link href={props.link(1)}>
+      <Link href={props.link("first")}>
         <a
           className={`flex-fill py-2 ${styles.first} ${styles.touch} ${
             !props.hasTouchScreen && styles.link
@@ -18,7 +18,7 @@ export const Component: React.VFC<_Props> = (props) => (
           <FontAwesomeIcon icon={["fas", "angle-double-left"]} />
         </a>
       </Link>
-      <Link href={props.link(props.currentPage - 1)}>
+      <Link href={props.link("previous")}>
         <a
           className={`flex-fill py-2 ${styles.touch} ${
             !props.hasTouchScreen && styles.link
@@ -30,7 +30,7 @@ export const Component: React.VFC<_Props> = (props) => (
           <FontAwesomeIcon icon={["fas", "angle-left"]} />
         </a>
       </Link>
-      <Link href={props.link(props.currentPage + 1)}>
+      <Link href={props.link("next")}>
         <a
           className={`flex-fill py-2 ${styles.touch} ${
             !props.hasTouchScreen && styles.link
@@ -42,7 +42,7 @@ export const Component: React.VFC<_Props> = (props) => (
           <FontAwesomeIcon icon={["fas", "angle-right"]} />
         </a>
       </Link>
-      <Link href={props.link(props.total)}>
+      <Link href={props.link("last")}>
         <a
           className={`flex-fill py-2 ${styles.last} ${styles.touch} ${
             !props.hasTouchScreen && styles.link

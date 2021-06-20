@@ -1,10 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticProps } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { LinkBrandIcon } from "~/components/link-brand-icon";
 import { Pagination } from "~/components/pagination";
-import { Pagination as PaginationSG } from "~/components/pagination-static";
 import { SearchBookmarksCountries } from "~/components/search-bookmarks-countries";
 import { SearchBookmarksTags } from "~/components/search-bookmarks-tags";
 import { SearchForm } from "~/components/search-form";
@@ -19,7 +17,7 @@ type Props = {
   pagination: PaginationProp;
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const response = await http({
     url: "/bookmarks?expand=tags",
     params,
@@ -36,8 +34,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function View(props: Props) {
-  const { pathname } = useRouter();
-
   return (
     <Page title="Bookmarks">
       <div className="row">
@@ -87,19 +83,11 @@ export default function View(props: Props) {
               </article>
             ))}
           </div>
-          {pathname === "/bookmarks/search" ? (
-            <Pagination
-              className="mt-2 mt-sm-4"
-              currentPage={props.pagination.currentPage}
-              total={props.pagination.pageCount}
-            />
-          ) : (
-            <PaginationSG
-              className="mt-2 mt-sm-4"
-              currentPage={props.pagination.currentPage}
-              total={props.pagination.pageCount}
-            />
-          )}
+          <Pagination
+            className="mt-2 mt-sm-4"
+            currentPage={props.pagination.currentPage}
+            total={props.pagination.pageCount}
+          />
         </div>
       </div>
     </Page>

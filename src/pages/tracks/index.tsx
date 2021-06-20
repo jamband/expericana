@@ -1,9 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticProps } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { Pagination } from "~/components/pagination";
-import { Pagination as PaginationSG } from "~/components/pagination-static";
 import { SearchForm } from "~/components/search-form";
 import { TrackCard } from "~/components/track-card";
 import { TotalCount } from "~/components/total-count";
@@ -37,7 +35,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 export default function View(props: Props) {
-  const { pathname } = useRouter();
   const { cardContainerRef, cardLayout } = useCardLayout();
 
   return (
@@ -81,19 +78,11 @@ export default function View(props: Props) {
           </div>
         ))}
       </div>
-      {pathname === "/tracks/search" ? (
-        <Pagination
-          className="mt-4"
-          currentPage={props.pagination.currentPage}
-          total={props.pagination.pageCount}
-        />
-      ) : (
-        <PaginationSG
-          className="mt-4"
-          currentPage={props.pagination.currentPage}
-          total={props.pagination.pageCount}
-        />
-      )}
+      <Pagination
+        className="mt-4"
+        currentPage={props.pagination.currentPage}
+        total={props.pagination.pageCount}
+      />
     </Page>
   );
 }

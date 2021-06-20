@@ -17,30 +17,30 @@ jest.mock("next/router", () => ({
 const router = useRouter as jest.Mock;
 
 beforeEach(() => {
-  router.mockReturnValue({
-    pathname: "/foo",
-  });
-});
-
-afterEach(() => {
   router.mockReset();
 });
 
-test("current page: first", () => {
+test("disabled when current page is first", () => {
+  router.mockReturnValue({
+    pathname: "/foo",
+    query: {},
+  });
+
   render(<Pagination currentPage={1} total={10} />);
   const [first, previous, next, last] = screen.getAllByRole("link");
+
   expect(first).toHaveClass("disabled");
   expect(previous).toHaveClass("disabled");
   expect(next).not.toHaveClass("disabled");
   expect(last).not.toHaveClass("disabled");
-  expect(first).toHaveAttribute("href", "/foo?page=1");
-  expect(previous).toHaveAttribute("href", "/foo?page=0");
-  expect(next).toHaveAttribute("href", "/foo?page=2");
-  expect(last).toHaveAttribute("href", "/foo?page=10");
-  expect(screen.getByText("1/10")).toBeInTheDocument();
 });
 
-test("current page: second", () => {
+test("disabled when current page is second", () => {
+  router.mockReturnValue({
+    pathname: "/foo",
+    query: {},
+  });
+
   render(<Pagination currentPage={2} total={10} />);
   const [first, previous, next, last] = screen.getAllByRole("link");
 
@@ -48,16 +48,14 @@ test("current page: second", () => {
   expect(previous).not.toHaveClass("disabled");
   expect(next).not.toHaveClass("disabled");
   expect(last).not.toHaveClass("disabled");
-
-  expect(first).toHaveAttribute("href", "/foo?page=1");
-  expect(previous).toHaveAttribute("href", "/foo?page=1");
-  expect(next).toHaveAttribute("href", "/foo?page=3");
-  expect(last).toHaveAttribute("href", "/foo?page=10");
-
-  expect(screen.getByText("2/10")).toBeInTheDocument();
 });
 
-test("current page: last", () => {
+test("disabled when current page is last", () => {
+  router.mockReturnValue({
+    pathname: "/foo",
+    query: {},
+  });
+
   render(<Pagination currentPage={10} total={10} />);
   const [first, previous, next, last] = screen.getAllByRole("link");
 
@@ -65,11 +63,64 @@ test("current page: last", () => {
   expect(previous).not.toHaveClass("disabled");
   expect(next).toHaveClass("disabled");
   expect(last).toHaveClass("disabled");
+});
 
-  expect(first).toHaveAttribute("href", "/foo?page=1");
-  expect(previous).toHaveAttribute("href", "/foo?page=9");
-  expect(next).toHaveAttribute("href", "/foo?page=11");
-  expect(last).toHaveAttribute("href", "/foo?page=10");
+test("link when current page is first", () => {
+  router.mockReturnValue({
+    pathname: "/foo",
+    query: {},
+  });
 
-  expect(screen.getByText("10/10")).toBeInTheDocument();
+  render(<Pagination currentPage={1} total={10} />);
+  const [first, previous, next, last] = screen.getAllByRole("link");
+
+  expect(first).toHaveAttribute("href", "/foo/pages/1");
+  expect(previous).toHaveAttribute("href", "/foo/pages/1");
+  expect(next).toHaveAttribute("href", "/foo/pages/2");
+  expect(last).toHaveAttribute("href", "/foo/pages/10");
+});
+
+test("link when current page is second", () => {
+  router.mockReturnValue({
+    pathname: "/foo",
+    query: {},
+  });
+
+  render(<Pagination currentPage={2} total={10} />);
+  const [first, previous, next, last] = screen.getAllByRole("link");
+
+  expect(first).toHaveAttribute("href", "/foo/pages/1");
+  expect(previous).toHaveAttribute("href", "/foo/pages/1");
+  expect(next).toHaveAttribute("href", "/foo/pages/3");
+  expect(last).toHaveAttribute("href", "/foo/pages/10");
+});
+
+test("link when current page is last", () => {
+  router.mockReturnValue({
+    pathname: "/foo",
+    query: {},
+  });
+
+  render(<Pagination currentPage={10} total={10} />);
+  const [first, previous, next, last] = screen.getAllByRole("link");
+
+  expect(first).toHaveAttribute("href", "/foo/pages/1");
+  expect(previous).toHaveAttribute("href", "/foo/pages/9");
+  expect(next).toHaveAttribute("href", "/foo/pages/10");
+  expect(last).toHaveAttribute("href", "/foo/pages/10");
+});
+
+test("link when pathname contains search", () => {
+  router.mockReturnValue({
+    pathname: "/foo/search",
+    query: { q: "bar" },
+  });
+
+  render(<Pagination currentPage={1} total={10} />);
+  const [first, previous, next, last] = screen.getAllByRole("link");
+
+  expect(first).toHaveAttribute("href", "/foo/search?q=bar&page=1");
+  expect(previous).toHaveAttribute("href", "/foo/search?q=bar&page=1");
+  expect(next).toHaveAttribute("href", "/foo/search?q=bar&page=2");
+  expect(last).toHaveAttribute("href", "/foo/search?q=bar&page=10");
 });
