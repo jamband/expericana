@@ -22,7 +22,17 @@ export const Pagination: React.VFC<Props> = (props) => {
       : props.currentPage >= props.total;
   };
 
-  const link = (page: number) => {
+  const link = (part: Part) => {
+    let page = 1;
+
+    if (part === "previous" && props.currentPage !== 1) {
+      page = props.currentPage - 1;
+    } else if (part === "next") {
+      page = props.currentPage + 1;
+    } else if (part === "last") {
+      page = props.total;
+    }
+
     return router.query.page
       ? {
           pathname: router.pathname,

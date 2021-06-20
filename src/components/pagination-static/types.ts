@@ -10,5 +10,5 @@ export type _Props = Props & {
   hasTouchScreen: boolean;
   blur: (event: React.MouseEvent<HTMLDivElement>) => void;
   disabled: (part: Part) => boolean;
-  link: (page: number) => { pathname: string };
+  link: (part: Part) => { pathname: string };
 };

@@ -34,7 +34,7 @@ test("current page: first", () => {
   expect(next).not.toHaveClass("disabled");
   expect(last).not.toHaveClass("disabled");
   expect(first).toHaveAttribute("href", "/foo/pages/1");
-  expect(previous).toHaveAttribute("href", "/foo/pages/0");
+  expect(previous).toHaveAttribute("href", "/foo/pages/1");
   expect(next).toHaveAttribute("href", "/foo/pages/2");
   expect(last).toHaveAttribute("href", "/foo/pages/10");
   expect(screen.getByText("1/10")).toBeInTheDocument();
