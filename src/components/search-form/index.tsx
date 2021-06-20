@@ -7,8 +7,8 @@ export const disabledPaths = [
   "/",
   "/playlists",
   "/playlists/[id]",
-  "about",
-  "contact",
+  "/about",
+  "/contact",
 ];
 
 export const SearchForm: React.VFC<Props> = (props) => {

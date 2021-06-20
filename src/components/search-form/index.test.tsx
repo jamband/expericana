@@ -1,8 +1,7 @@
 /** @jest-environment jsdom */
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { useRouter } from "next/router";
-import { SearchForm } from ".";
-import { disabledPaths } from "~/components/search-form";
+import { disabledPaths, SearchForm } from ".";
 
 jest.mock("next/router", () => ({
   useRouter: jest.fn(),
@@ -15,17 +14,6 @@ beforeEach(() => {
 });
 
 test("disabled", () => {
-  ["/tracks"].map((pathname) => {
-    router.mockReturnValue({
-      pathname,
-      query: {},
-    });
-
-    render(<SearchForm />);
-    expect(screen.getByRole("group")).toBeEnabled();
-    cleanup();
-  });
-
   disabledPaths.map((pathname) => {
     router.mockReturnValue({
       pathname,
@@ -34,6 +22,19 @@ test("disabled", () => {
 
     render(<SearchForm />);
     expect(screen.getByRole("group")).toBeDisabled();
+    cleanup();
+  });
+});
+
+test("enabled", () => {
+  ["/tracks"].map((pathname) => {
+    router.mockReturnValue({
+      pathname,
+      query: {},
+    });
+
+    render(<SearchForm />);
+    expect(screen.getByRole("group")).toBeEnabled();
     cleanup();
   });
 });
