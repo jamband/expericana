@@ -1,10 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticProps } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { SearchForm } from "~/components/search-form";
 import { SearchLabelsCountries } from "~/components/search-labels-countries";
 import { SearchLabelsTags } from "~/components/search-labels-tags";
 import { LinkBrandIcon } from "~/components/link-brand-icon";
-import { Pagination } from "~/components/pagination-static";
+import { Pagination } from "~/components/pagination";
+import { Pagination as PaginationSG } from "~/components/pagination-static";
 import { TotalCount } from "~/components/total-count";
 import { Page } from "~/layouts/page";
 import type { Label } from "~/types/label";
@@ -33,6 +36,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 export default function View(props: Props) {
+  const { pathname } = useRouter();
+
   return (
     <Page title="Labels">
       <div className="row">
@@ -47,6 +52,7 @@ export default function View(props: Props) {
           <br className="d-md-none d-lg-block" />
           <SearchLabelsCountries />
           <SearchLabelsTags />
+          <SearchForm className="d-md-none mt-3" />
         </div>
         <div className="col-lg-8 mt-3 mt-lg-0">
           <div className="row">
@@ -78,11 +84,19 @@ export default function View(props: Props) {
               </article>
             ))}
           </div>
-          <Pagination
-            className="mt-2 mt-sm-4"
-            currentPage={props.pagination.currentPage}
-            total={props.pagination.pageCount}
-          />
+          {pathname === "/labels/search" ? (
+            <Pagination
+              className="mt-2 mt-sm-4"
+              currentPage={props.pagination.currentPage}
+              total={props.pagination.pageCount}
+            />
+          ) : (
+            <PaginationSG
+              className="mt-2 mt-sm-4"
+              currentPage={props.pagination.currentPage}
+              total={props.pagination.pageCount}
+            />
+          )}
         </div>
       </div>
     </Page>

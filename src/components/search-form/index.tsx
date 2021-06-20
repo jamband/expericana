@@ -3,18 +3,20 @@ import { useState, useEffect } from "react";
 import { Component } from "./component";
 import type { Props } from "./types";
 
+export const disabledPaths = [
+  "/",
+  "/playlists",
+  "/playlists/[id]",
+  "about",
+  "contact",
+];
+
 export const SearchForm: React.VFC<Props> = (props) => {
   const router = useRouter();
   const search = router.query.q || "";
   const [value, setValue] = useState(search);
 
-  const disabled = ![
-    "/tracks",
-    "/tracks/pages/[page]",
-    "/tracks/genres/[provider]/pages/[page]",
-    "/tracks/providers/[provider]/pages/[page]",
-    "/tracks/search",
-  ].includes(router.pathname);
+  const disabled = disabledPaths.includes(router.pathname);
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

@@ -1,10 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticProps } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { LinkBrandIcon } from "~/components/link-brand-icon";
-import { Pagination } from "~/components/pagination-static";
+import { Pagination } from "~/components/pagination";
+import { Pagination as PaginationSG } from "~/components/pagination-static";
 import { SearchBookmarksCountries } from "~/components/search-bookmarks-countries";
 import { SearchBookmarksTags } from "~/components/search-bookmarks-tags";
+import { SearchForm } from "~/components/search-form";
 import { TotalCount } from "~/components/total-count";
 import { Page } from "~/layouts/page";
 import type { Bookmark } from "~/types/bookmark";
@@ -33,6 +36,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export default function View(props: Props) {
+  const { pathname } = useRouter();
+
   return (
     <Page title="Bookmarks">
       <div className="row">
@@ -47,6 +52,7 @@ export default function View(props: Props) {
           <br className="d-md-none d-lg-block" />
           <SearchBookmarksCountries />
           <SearchBookmarksTags />
+          <SearchForm className="d-md-none mt-3" />
         </div>
         <div className="col-lg-8 mt-3 mt-lg-0">
           <div className="row">
@@ -81,11 +87,19 @@ export default function View(props: Props) {
               </article>
             ))}
           </div>
-          <Pagination
-            className="mt-2 mt-sm-4"
-            currentPage={props.pagination.currentPage}
-            total={props.pagination.pageCount}
-          />
+          {pathname === "/bookmarks/search" ? (
+            <Pagination
+              className="mt-2 mt-sm-4"
+              currentPage={props.pagination.currentPage}
+              total={props.pagination.pageCount}
+            />
+          ) : (
+            <PaginationSG
+              className="mt-2 mt-sm-4"
+              currentPage={props.pagination.currentPage}
+              total={props.pagination.pageCount}
+            />
+          )}
         </div>
       </div>
     </Page>

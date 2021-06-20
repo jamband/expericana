@@ -2,6 +2,7 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { useRouter } from "next/router";
 import { SearchForm } from ".";
+import { disabledPaths } from "~/components/search-form";
 
 jest.mock("next/router", () => ({
   useRouter: jest.fn(),
@@ -25,7 +26,7 @@ test("disabled", () => {
     cleanup();
   });
 
-  ["/foo", "/bar"].map((pathname) => {
+  disabledPaths.map((pathname) => {
     router.mockReturnValue({
       pathname,
       query: {},
