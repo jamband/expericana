@@ -47,11 +47,11 @@ export default function View(props: Props) {
               title={track.title}
               footer={track.created_at}
             >
-              <Link href={`/tracks?provider=${track.provider}`}>
+              <Link href={`/tracks/providers/${track.provider}/pages/1`}>
                 <a className="tag">{track.provider}</a>
               </Link>
               {track.genres.map((genre, index) => (
-                <Link key={index} href={`/tracks?genre=${genre.name}`}>
+                <Link key={index} href={`/tracks/genres/${genre.name}/pages/1`}>
                   <a className="tag">{genre.name}</a>
                 </Link>
               ))}
@@ -63,7 +63,7 @@ export default function View(props: Props) {
         Search <small className="text-muted">by genres</small>
       </h1>
       {props.genres.map((genre, index) => (
-        <Link href={`/tracks?genre=${genre}`} key={index}>
+        <Link href={`/tracks/genres/${genre}/pages/1`} key={index}>
           <a className="tag">{genre}</a>
         </Link>
       ))}
