@@ -18,7 +18,10 @@ export const Component: React.VFC<_Props> = (props) => (
     {props.error && <DropdownText>{props.error.message}</DropdownText>}
     {props.data &&
       props.data.map((country, index) => (
-        <DropdownLink key={index} href={`/bookmarks/countries/${country}`}>
+        <DropdownLink
+          key={index}
+          href={`/bookmarks/countries/${country}/pages/1`}
+        >
           {country}
         </DropdownLink>
       ))}

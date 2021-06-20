@@ -10,7 +10,6 @@ import { Page } from "~/layouts/page";
 import type { Label } from "~/types/label";
 import type { Pagination as PaginationProp } from "~/types/pagination";
 import { http } from "~/utils/http";
-import { SearchForm } from "~/components/search-form";
 
 type Props = {
   labels: Label[];
@@ -48,9 +47,8 @@ export default function View(props: Props) {
           <br className="d-md-none d-lg-block" />
           <SearchLabelsCountries />
           <SearchLabelsTags />
-          <SearchForm className="d-md-none my-2" />
         </div>
-        <div className="col-lg-8 mt-md-3 mt-lg-0">
+        <div className="col-lg-8 mt-3 mt-lg-0">
           <div className="row">
             {props.labels.map((label, index) => (
               <article key={index} className="col-lg-6 mb-3">
@@ -71,7 +69,7 @@ export default function View(props: Props) {
                 <section>
                   <span className="me-2">Tags:</span>
                   {label.tags.map((tag, index) => (
-                    <Link key={index} href={`/labels/tags/${tag.name}`}>
+                    <Link key={index} href={`/labels/tags/${tag.name}/pages/1`}>
                       <a className="tag">{tag.name}</a>
                     </Link>
                   ))}

@@ -8,13 +8,19 @@ export const SearchForm: React.VFC<Props> = (props) => {
   const search = router.query.q || "";
   const [value, setValue] = useState(search);
 
-  const disabled = !["/tracks"].includes(router.pathname);
+  const disabled = ![
+    "/tracks",
+    "/tracks/pages/[page]",
+    "/tracks/genres/[provider]/pages/[page]",
+    "/tracks/providers/[provider]/pages/[page]",
+    "/tracks/search",
+  ].includes(router.pathname);
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     router.push({
-      pathname: router.pathname,
+      pathname: `/${router.pathname.split("/")[1]}/search`,
       query: { q: value },
     });
   };

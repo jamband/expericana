@@ -51,7 +51,7 @@ test("submit, change", () => {
   fireEvent.submit(input);
 
   expect(useRouter().push).toHaveBeenCalledWith({
-    pathname: "/tracks",
+    pathname: "/tracks/search",
     query: { q: "foo" },
   });
 

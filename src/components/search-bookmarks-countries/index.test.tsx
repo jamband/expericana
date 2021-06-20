@@ -71,9 +71,18 @@ test("data", () => {
   expect(listitem).toHaveLength(3);
 
   expect(listitem[0]).toHaveTextContent("Foo");
-  expect(listitem[0]).toHaveAttribute("href", "/bookmarks/countries/Foo");
+  expect(listitem[0]).toHaveAttribute(
+    "href",
+    "/bookmarks/countries/Foo/pages/1"
+  );
   expect(listitem[1]).toHaveTextContent("Bar");
-  expect(listitem[1]).toHaveAttribute("href", "/bookmarks/countries/Bar");
+  expect(listitem[1]).toHaveAttribute(
+    "href",
+    "/bookmarks/countries/Bar/pages/1"
+  );
   expect(listitem[2]).toHaveTextContent("Baz");
-  expect(listitem[2]).toHaveAttribute("href", "/bookmarks/countries/Baz");
+  expect(listitem[2]).toHaveAttribute(
+    "href",
+    "/bookmarks/countries/Baz/pages/1"
+  );
 });

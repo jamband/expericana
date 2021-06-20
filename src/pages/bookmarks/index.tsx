@@ -3,7 +3,6 @@ import type { GetStaticProps } from "next";
 import Link from "next/link";
 import { LinkBrandIcon } from "~/components/link-brand-icon";
 import { Pagination } from "~/components/pagination-static";
-import { SearchForm } from "~/components/search-form";
 import { SearchBookmarksCountries } from "~/components/search-bookmarks-countries";
 import { SearchBookmarksTags } from "~/components/search-bookmarks-tags";
 import { TotalCount } from "~/components/total-count";
@@ -48,9 +47,8 @@ export default function View(props: Props) {
           <br className="d-md-none d-lg-block" />
           <SearchBookmarksCountries />
           <SearchBookmarksTags />
-          <SearchForm className="d-md-none my-2" />
         </div>
-        <div className="col-lg-8 mt-md-3 mt-lg-0">
+        <div className="col-lg-8 mt-3 mt-lg-0">
           <div className="row">
             {props.bookmarks.map((bookmark, index) => (
               <article key={index} className="col-lg-6 mb-3">
@@ -71,7 +69,10 @@ export default function View(props: Props) {
                 <section>
                   <span className="me-2">Tags:</span>
                   {bookmark.tags.map((tag, index) => (
-                    <Link key={index} href={`/bookmarks/tags/${tag.name}`}>
+                    <Link
+                      key={index}
+                      href={`/bookmarks/tags/${tag.name}/pages/1`}
+                    >
                       <a className="tag">{tag.name}</a>
                     </Link>
                   ))}

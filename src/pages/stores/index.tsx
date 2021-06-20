@@ -5,7 +5,6 @@ import { SearchStoresCountries } from "~/components/search-stores-countries";
 import { SearchStoresTags } from "~/components/search-stores-tags";
 import { LinkBrandIcon } from "~/components/link-brand-icon";
 import { Pagination } from "~/components/pagination-static";
-import { SearchForm } from "~/components/search-form";
 import { TotalCount } from "~/components/total-count";
 import { Page } from "~/layouts/page";
 import type { Pagination as PaginationProp } from "~/types/pagination";
@@ -48,9 +47,8 @@ export default function View(props: Props) {
           <br className="d-md-none d-lg-block" />
           <SearchStoresCountries />
           <SearchStoresTags />
-          <SearchForm className="d-md-none my-2" />
         </div>
-        <div className="col-lg-8 mt-md-3 mt-lg-0">
+        <div className="col-lg-8 mt-3 mt-lg-0">
           <div className="row">
             {props.stores.map((store, index) => (
               <article key={index} className="col-lg-6 mb-3">
@@ -71,7 +69,7 @@ export default function View(props: Props) {
                 <section>
                   <span className="me-2">Tags:</span>
                   {store.tags.map((tag, index) => (
-                    <Link key={index} href={`/stores/tags/${tag.name}`}>
+                    <Link key={index} href={`/stores/tags/${tag.name}/pages/1`}>
                       <a className="tag">{tag.name}</a>
                     </Link>
                   ))}

@@ -71,9 +71,9 @@ test("data", () => {
   expect(listitem).toHaveLength(3);
 
   expect(listitem[0]).toHaveTextContent("Foo");
-  expect(listitem[0]).toHaveAttribute("href", "/stores/countries/Foo");
+  expect(listitem[0]).toHaveAttribute("href", "/stores/countries/Foo/pages/1");
   expect(listitem[1]).toHaveTextContent("Bar");
-  expect(listitem[1]).toHaveAttribute("href", "/stores/countries/Bar");
+  expect(listitem[1]).toHaveAttribute("href", "/stores/countries/Bar/pages/1");
   expect(listitem[2]).toHaveTextContent("Baz");
-  expect(listitem[2]).toHaveAttribute("href", "/stores/countries/Baz");
+  expect(listitem[2]).toHaveAttribute("href", "/stores/countries/Baz/pages/1");
 });

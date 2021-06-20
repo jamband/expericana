@@ -1,11 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticProps } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { Pagination } from "~/components/pagination";
+import { Pagination as PaginationSG } from "~/components/pagination-static";
+import { SearchForm } from "~/components/search-form";
 import { TrackCard } from "~/components/track-card";
 import { TotalCount } from "~/components/total-count";
 import { SearchTracksGenres } from "~/components/search-tracks-genres";
 import { SearchTracksProviders } from "~/components/search-tracks-providers";
-import { Pagination } from "~/components/pagination-static";
 import { useCardLayout } from "~/hooks/card-layout";
 import { Page } from "~/layouts/page";
 import type { Pagination as PaginationProps } from "~/types/pagination";
@@ -34,11 +37,12 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 export default function View(props: Props) {
+  const { pathname } = useRouter();
   const { cardContainerRef, cardLayout } = useCardLayout();
 
   return (
     <Page title="Tracks">
-      <div className="text-center mb-4">
+      <div className="text-center mb-2 mb-md-4">
         <Link href="/tracks">
           <a className="tag">
             <FontAwesomeIcon icon={["fas", "redo-alt"]} size="sm" fixedWidth />{" "}
@@ -49,6 +53,7 @@ export default function View(props: Props) {
         <br className="d-sm-none" />
         <SearchTracksProviders />
         <SearchTracksGenres />
+        <SearchForm className="d-md-none mt-3" />
       </div>
       <div
         ref={cardContainerRef}
@@ -76,11 +81,19 @@ export default function View(props: Props) {
           </div>
         ))}
       </div>
-      <Pagination
-        className="mt-4"
-        currentPage={props.pagination.currentPage}
-        total={props.pagination.pageCount}
-      />
+      {pathname === "/tracks/search" ? (
+        <Pagination
+          className="mt-4"
+          currentPage={props.pagination.currentPage}
+          total={props.pagination.pageCount}
+        />
+      ) : (
+        <PaginationSG
+          className="mt-4"
+          currentPage={props.pagination.currentPage}
+          total={props.pagination.pageCount}
+        />
+      )}
     </Page>
   );
 }
