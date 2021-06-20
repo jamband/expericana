@@ -31,10 +31,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     url: `/playlists/${params?.id}`,
   });
 
-  if (!response.ok!) {
-    return { notFound: true };
-  }
-
   const playlist = await response.json();
 
   return {
