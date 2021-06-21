@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Dropdown } from "~/components/dropdown";
+import { DropdownHeader } from "~/components/dropdown-header";
 import { DropdownLink } from "~/components/dropdown-link";
 import { SearchForm } from "~/components/search-form";
 import { APP_NAME } from "~/constants/app";
@@ -54,6 +55,7 @@ export const Component: React.VFC<_Props> = (props) => (
               </Link>
             ))}
             <Dropdown id="headerMoreLinks" nav>
+              <DropdownHeader>More Links</DropdownHeader>
               {props.moreLinks.map((link, index) => (
                 <DropdownLink key={index} href={link.href}>
                   {link.text}

@@ -8,7 +8,9 @@ export const Component: React.VFC<_Props> = (props) => (
       role="button"
       id={props.id}
       className={props.labelClass}
+      title={props.nav ? "More" : undefined}
       data-bs-toggle="dropdown"
+      aria-label={props.nav ? "More" : undefined}
       aria-expanded={false}
     >
       {props.label ? (
