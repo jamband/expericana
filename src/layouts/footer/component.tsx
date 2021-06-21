@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { APP_NAME } from "~/constants/app";
+import styles from "./style.module.scss";
 import type { _Props } from "./types";
 
 export const Component: React.VFC<_Props> = (props) => (
@@ -9,7 +10,9 @@ export const Component: React.VFC<_Props> = (props) => (
       <>
         <FontAwesomeIcon icon={["fas", "volume-up"]} size="sm" fixedWidth />
         <Link href={props.playerUrl}>
-          <a className="mx-3 text-body">{props.playerTitle}</a>
+          <a className={`mx-3 text-body ${styles.title}`}>
+            {props.playerTitle}
+          </a>
         </Link>
         <button
           type="button"
