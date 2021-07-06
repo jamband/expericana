@@ -1,14 +1,14 @@
 import { useRouter } from "next/router";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Component } from "./component";
 
 export const Header: React.VFC = () => {
   const router = useRouter();
   const collapseRef = useRef<HTMLDivElement>(null);
 
-  const hideNavigation = () => {
+  const toggleNavigation = () => {
     import("bootstrap/js/dist/collapse").then((module) => {
-      new module.default(collapseRef.current!).hide();
+      new module.default(collapseRef.current!).toggle();
     });
   };
 
@@ -34,14 +34,10 @@ export const Header: React.VFC = () => {
     return className;
   };
 
-  useEffect(() => {
-    import("bootstrap/js/dist/collapse");
-  }, []);
-
   return (
     <Component
       collapseRef={collapseRef}
-      hideNavigation={hideNavigation}
+      toggleNavigation={toggleNavigation}
       links={links}
       moreLinks={moreLinks}
       linkClass={linkClass}

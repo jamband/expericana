@@ -19,11 +19,10 @@ export const Component: React.VFC<_Props> = (props) => (
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbar"
           aria-controls="collapse"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClickCapture={props.toggleNavigation}
         >
           <span className="navbar-toggler-icon" />
         </button>
@@ -32,19 +31,15 @@ export const Component: React.VFC<_Props> = (props) => (
           id="navbar"
           className="collapse navbar-collapse"
         >
-          <div
-            className="d-md-none navbar-nav"
-            onClick={props.hideNavigation}
-            role="presentation"
-          >
-            {props.links.map((link, index) => (
+          <div className="d-md-none navbar-nav">
+            {props.links.concat(props.moreLinks).map((link, index) => (
               <Link key={index} href={link.href}>
-                <a className={props.linkClass(link.href)}>{link.text}</a>
-              </Link>
-            ))}
-            {props.moreLinks.map((link, index) => (
-              <Link key={index} href={link.href}>
-                <a className={props.linkClass(link.href)}>{link.text}</a>
+                <a
+                  className={props.linkClass(link.href)}
+                  onClickCapture={props.toggleNavigation}
+                >
+                  {link.text}
+                </a>
               </Link>
             ))}
           </div>

@@ -1,9 +1,39 @@
+// lazysizes
+.lazyload {
+  width: 100%;
+}
+
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+
+.lazyloaded {
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
 // Navbar
+.nav-link {
+  @include media-breakpoint-down(md) {
+    &::before {
+      content: "";
+      display: inline-block;
+      margin-right: 0.8rem;
+    }
+  }
+}
+
 .nav-link.active {
-  @include media-breakpoint-down(sm) {
-    &::after {
-      color: var(--bs-primary);
-      content: " *";
+  @include media-breakpoint-down(md) {
+    &::before {
+      background-color: var(--bs-primary);
+      border-radius: 50%;
+      bottom: 2px;
+      height: 8px;
+      margin-right: 0.3rem;
+      position: relative;
+      width: 8px;
     }
   }
 
@@ -34,19 +64,4 @@
   &:hover {
     color: var(--bs-light);
   }
-}
-
-// lazysizes
-.lazyload {
-  width: 100%;
-}
-
-.lazyload,
-.lazyloading {
-  opacity: 0;
-}
-
-.lazyloaded {
-  opacity: 0.8;
-  transition: opacity 0.3s;
 }
