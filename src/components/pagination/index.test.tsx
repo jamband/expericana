@@ -27,7 +27,7 @@ test("disabled when current page is first", () => {
   });
 
   render(<Pagination currentPage={1} total={10} />);
-  const [first, previous, next, last] = screen.getAllByRole("link");
+  const [first, previous, next, last] = screen.getAllByRole("listitem");
 
   expect(first).toHaveClass("disabled");
   expect(previous).toHaveClass("disabled");
@@ -42,7 +42,7 @@ test("disabled when current page is second", () => {
   });
 
   render(<Pagination currentPage={2} total={10} />);
-  const [first, previous, next, last] = screen.getAllByRole("link");
+  const [first, previous, next, last] = screen.getAllByRole("listitem");
 
   expect(first).not.toHaveClass("disabled");
   expect(previous).not.toHaveClass("disabled");
@@ -57,7 +57,7 @@ test("disabled when current page is last", () => {
   });
 
   render(<Pagination currentPage={10} total={10} />);
-  const [first, previous, next, last] = screen.getAllByRole("link");
+  const [first, previous, next, last] = screen.getAllByRole("listitem");
 
   expect(first).not.toHaveClass("disabled");
   expect(previous).not.toHaveClass("disabled");

@@ -75,7 +75,9 @@ $input-border-color:                    $dark;
 $navbar-nav-link-padding-x:         0.8rem;
 $navbar-dark-hover-color:           $light;
 $navbar-dark-toggler-border-color:  none;
+$navbar-toggler-padding-x:          0.5rem;
 $navbar-toggler-font-size:          1rem;
+$navbar-toggler-focus-width:        0.1rem;
 
 // Dropdowns
 $dropdown-bg:                       $body-bg;
@@ -83,6 +85,15 @@ $dropdown-link-color:               $secondary;
 $dropdown-link-hover-color:         $light;
 $dropdown-link-hover-bg:            $dark;
 $dropdown-divider-bg:               $secondary;
+
+// Pagination
+$pagination-padding-y:              0.5rem;
+$pagination-bg:                     transparent;
+$pagination-border-width:           0;
+$pagination-focus-bg:               color.scale(white, $lightness: 0%, $alpha: -95%);
+$pagination-hover-bg:               transparent;
+$pagination-disabled-color:         $text-muted;
+$pagination-disabled-bg:            transparent;
 
 // Close
 $btn-close-color:            $light;

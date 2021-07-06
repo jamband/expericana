@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useHasTouchScreen } from "~/hooks/screen";
 import { Component } from "./component";
 import type { Props, Part } from "./types";
+import styles from "./style.module.scss";
 
 export const Pagination: React.VFC<Props> = (props) => {
   const router = useRouter();
@@ -13,14 +14,18 @@ export const Pagination: React.VFC<Props> = (props) => {
     className += ` ${props.className}`;
   }
 
-  const blur = (event: React.MouseEvent<HTMLDivElement>) => {
-    (event.target as HTMLDivElement).blur();
-  };
-
   const disabled = (part: Part) => {
     return ["first", "previous"].includes(part)
       ? currentPage < 2
       : currentPage >= total;
+  };
+
+  const itemClass = (part: Part) => {
+    let selector = "page-item flex-fill";
+    if (disabled(part)) {
+      selector += " disabled";
+    }
+    return selector;
   };
 
   const link = (part: Part) => {
@@ -47,14 +52,27 @@ export const Pagination: React.VFC<Props> = (props) => {
     };
   };
 
+  const linkClass = () => {
+    let selector = `page-link ${styles.link}`;
+    if (!hasTouchScreen) {
+      selector += ` ${styles.clickable}`;
+    }
+    return selector;
+  };
+
+  const blur = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.currentTarget.blur();
+  };
+
   return (
     <Component
       {...props}
       className={className}
-      blur={blur}
-      hasTouchScreen={hasTouchScreen}
-      disabled={disabled}
+      itemClass={itemClass}
       link={link}
+      linkClass={linkClass}
+      disabled={disabled}
+      blur={blur}
     />
   );
 };
