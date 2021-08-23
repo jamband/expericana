@@ -5,6 +5,7 @@ import { Hydrate } from "react-query/hydration";
 import { Player } from "~/components/player";
 import { PlayerProvider } from "~/contexts/player";
 import { Layout } from "~/layouts/layout";
+import { Loading } from "~/layouts/loading";
 import { RegisterFontAwesomeIcons } from "~/utils/fontawesome";
 import "~/styles/app.scss";
 
@@ -27,6 +28,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Hydrate state={pageProps.dehydratedState}>
         <PlayerProvider>
           <Layout>
+            <Loading />
             <Player />
             <Component {...pageProps} />
           </Layout>
