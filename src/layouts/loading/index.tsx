@@ -44,7 +44,7 @@ export const Loading: React.VFC = () => {
       router.events.off("routeChangeComplete", complete);
       router.events.off("routeChangeError", complete);
     };
-  });
+  }, [router]);
 
   return <Component className={className} />;
 };
