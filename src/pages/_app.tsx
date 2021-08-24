@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { useEffect, useRef } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
@@ -25,6 +26,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClientRef.current}>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+      </Head>
       <Hydrate state={pageProps.dehydratedState}>
         <PlayerProvider>
           <Layout>
