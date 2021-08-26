@@ -102,7 +102,7 @@ test("player url when type is track", () => {
   );
 });
 
-test("player url when type is playlist }", () => {
+test("player url when type is playlist", () => {
   router.mockReturnValue({ pathname: "/" });
   playerAction.mockReturnValue({ clear: () => null });
 
@@ -119,22 +119,6 @@ test("player url when type is playlist }", () => {
     "href",
     `/playlists/${player.id}`
   );
-});
-
-test("length of player title", () => {
-  router.mockReturnValue({ pathname: "/" });
-  playerAction.mockReturnValue({ clear: () => null });
-
-  player.title = "a".repeat(31);
-  playerState.mockReturnValue(player);
-
-  render(
-    <PlayerProvider>
-      <Footer />
-    </PlayerProvider>
-  );
-
-  expect(screen.getByRole("link")).toHaveTextContent(/^a{30}\.\.\.$/);
 });
 
 test("clear", () => {

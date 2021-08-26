@@ -15,16 +15,11 @@ export const Footer: React.VFC = () => {
       ? `/tracks/${player.id}`
       : `/playlists/${player.id}`;
 
-  const playerTitle =
-    player.title.length <= 30
-      ? player.title
-      : `${player.title.substring(0, 30)}...`;
-
   return (
     <Component
       showPlayerTitle={showPlayerTitle}
       playerUrl={playerUrl}
-      playerTitle={playerTitle}
+      playerTitle={player.title}
       clear={clear}
     />
   );
