@@ -35,7 +35,7 @@
     "@types/bootstrap": "^5.1.2",
     "@types/jest": "^27.0.1",
     "@types/masonry-layout": "^4.2.4",
-    "@types/node": "^16.7.1",
+    "@types/node": "^16.7.2",
     "@types/react": "^17.0.19",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
