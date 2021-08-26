@@ -36,7 +36,7 @@ export default function View(props: Props) {
         <div className="col-md-6">
           <ul className="list-unstyled text-truncate">
             {props.playlists.map((playlist) => (
-              <li key={playlist.id} className="h5">
+              <li key={playlist.id} className="ms-1 mt-1 h5 fw-bold">
                 <Link href={`/playlists/${playlist.id}`}>
                   <a>
                     {playlist.title}{" "}
