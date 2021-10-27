@@ -1,10 +1,10 @@
 {
-  "extends": ["stylelint-config-standard"],
-  "plugins": ["stylelint-order", "stylelint-scss"],
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-order"],
   "rules": {
-    "at-rule-no-unknown": null,
+    "alpha-value-notation": "number",
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["YuGothic"] }],
     "order/properties-alphabetical-order": true,
-    "scss/at-rule-no-unknown": true,
-    "value-keyword-case": ["lower", { "ignoreKeywords": ["YuGothic"] }]
+    "scss/dollar-variable-colon-space-after": "at-least-one-space"
   }
 }
