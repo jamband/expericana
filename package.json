@@ -6,9 +6,9 @@
     "start": "next start",
     "lint": "next lint",
     "tsc": "tsc",
-    "prettier": "prettier --check .",
+    "format": "prettier --check .",
     "stylelint": "stylelint \"src/**/*.{css,scss}\"",
-    "test": "jest",
+    "test": "jest -i",
     "clear": "rm -rf .next",
     "clean": "rm -rf .next node_modules"
   },
