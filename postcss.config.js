@@ -31,5 +31,5 @@ module.exports = {
             },
           ],
         ]
-      : [],
+      : [["postcss-preset-env", { stage: false }]],
 };
