@@ -35,9 +35,6 @@ test("ratio: Bandcamp, SoundCloud", () => {
     const link = screen.getByRole("link");
     expect(link).toHaveClass("ratio-1x1");
 
-    const img = screen.getAllByRole("img")[0];
-    expect(img).toHaveAttribute("data-aspectratio", "1/1");
-
     cleanup();
   });
 });
@@ -54,9 +51,6 @@ test("ratio: Vimeo, YouTube", () => {
 
     const link = screen.getByRole("link");
     expect(link).toHaveClass("ratio-16x9");
-
-    const img = screen.getAllByRole("img")[0];
-    expect(img).toHaveAttribute("data-aspectratio", "16/9");
 
     cleanup();
   });

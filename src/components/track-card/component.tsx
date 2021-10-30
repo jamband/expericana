@@ -8,13 +8,7 @@ export const Component: React.VFC<_Props> = (props) => (
     <Link href={`/tracks/${props.id}`}>
       <a className={`${styles.imagewrap} ${props.ratioSelector}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className={`${styles.image} lazyload`}
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNQqgcAAMYAogMXSH0AAAAASUVORK5CYII="
-          data-src={props.image}
-          data-aspectratio={props.ratio}
-          alt=""
-        />
+        <img className={styles.image} src={props.image} alt="" loading="lazy" />
         <div className={styles.play}>
           <FontAwesomeIcon icon={["fas", props.audioStatusIcon]} />
         </div>

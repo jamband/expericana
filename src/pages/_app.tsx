@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { Player } from "~/components/player";
@@ -18,11 +18,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient();
   }
-
-  useEffect(() => {
-    import("lazysizes");
-    require("lazysizes/plugins/aspectratio/ls.aspectratio");
-  }, []);
 
   return (
     <QueryClientProvider client={queryClientRef.current}>
