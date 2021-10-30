@@ -4,10 +4,10 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "tsc": "tsc",
-    "format": "prettier --check .",
+    "lint": "next lint",
     "stylelint": "stylelint \"src/**/*.{css,scss}\"",
+    "format": "prettier --check .",
     "test": "jest -i",
     "clear": "rm -rf .next",
     "clean": "rm -rf .next node_modules"
