@@ -10,7 +10,7 @@
     "format": "prettier --check .",
     "test": "jest -i",
     "clear": "rm -rf .next",
-    "clean": "rm -rf .next node_modules"
+    "clean": "rm -rf .next node_modules tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
