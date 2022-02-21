@@ -1,12 +1,11 @@
-import type { IconName } from "@fortawesome/fontawesome-common-types";
-import type { IconProp } from "~/types/fontawesome";
+import type { IconName, IconPrefix } from "@fortawesome/fontawesome-svg-core";
 import { Component } from "./component";
 import type { Props } from "./types";
 
 export const LinkBrandIcon: React.VFC<Props> = (props) => {
   const links = props.link.split("\n").filter((link) => link !== "");
 
-  const icon = (link: string): IconProp => {
+  const icon = (link: string): [IconPrefix, IconName] => {
     const icons = {
       "bandcamp.com": "bandcamp",
       "facebook.com": "facebook-square",

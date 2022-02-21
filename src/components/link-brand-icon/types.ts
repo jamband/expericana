@@ -1,7 +1,4 @@
-import type {
-  IconName,
-  IconPrefix,
-} from "@fortawesome/fontawesome-common-types";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export type Props = {
   link: string;
@@ -9,5 +6,5 @@ export type Props = {
 
 export type _Props = Props & {
   links: string[];
-  icon: (link: string) => [IconPrefix, IconName];
+  icon: (link: string) => IconProp;
 };
