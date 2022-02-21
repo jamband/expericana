@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { GetStaticProps } from "next";
 import Link from "next/link";
 import { LinkBrandIcon } from "~/components/link-brand-icon";
+import { LinkExternal } from "~/components/link-external";
 import { Pagination } from "~/components/pagination";
 import { SearchForm } from "~/components/search-form";
 import { SearchLabelsCountries } from "~/components/search-labels-countries";
@@ -55,10 +56,10 @@ export default function View(props: Props) {
             {props.labels.map((label, index) => (
               <article key={index} className="col-lg-6 mb-3">
                 <section className="mb-1">
-                  <a href={label.url}>
+                  <LinkExternal href={label.url}>
                     <FontAwesomeIcon icon={["fas", "external-link-alt"]} />{" "}
                     <strong>{label.name}</strong>
-                  </a>
+                  </LinkExternal>
                 </section>
                 <section className="mb-1">
                   <span className="me-2">Country:</span>
