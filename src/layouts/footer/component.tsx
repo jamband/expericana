@@ -12,17 +12,16 @@ export const Component: React.VFC<_Props> = (props) => (
           <FontAwesomeIcon
             icon={["fas", "volume-up"]}
             size="sm"
-            fixedWidth
             className="mx-3"
           />
           <Link href={props.playerUrl}>
-            <a className={`py-2 px-1 text-body text-truncate ${styles.title}`}>
+            <a className="py-2 px-1 text-body text-truncate">
               {props.playerTitle}
             </a>
           </Link>
           <button
             type="button"
-            className="p-3 btn-close btn-sm align-text-top"
+            className="p-3 btn-close btn-sm"
             aria-label="Close"
             onClick={props.clear}
           />
