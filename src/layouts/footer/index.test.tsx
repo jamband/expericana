@@ -5,7 +5,6 @@ import { APP_NAME } from "~/constants/app";
 import { PlayerProvider } from "~/contexts/player";
 import { usePlayerAction, usePlayerState } from "~/hooks/player";
 import { initialState } from "~/reducers/player";
-import "~/utils/fontawesome-mock";
 import { Footer } from ".";
 
 jest.mock("next/router", () => ({
