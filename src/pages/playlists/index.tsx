@@ -28,10 +28,8 @@ export default function View(props: Props) {
     <Page title="Playlists">
       <div className="row">
         <div className="col-md-5 offset-md-1">
-          <h1>
-            Playlists{" "}
-            <small className="text-muted">via SoundCloud or YouTube</small>
-          </h1>
+          <h1>Playlists</h1>
+          <p className="fw-normal text-body">via SoundCloud or YouTube</p>
         </div>
         <div className="col-md-6">
           <ul className="list-unstyled text-truncate">

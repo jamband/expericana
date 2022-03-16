@@ -160,7 +160,7 @@ test("iframe.src", () => {
   });
 });
 
-test("title", () => {
+test("title and provider", () => {
   const data = [
     { title: "title1", provider: "Foo" },
     { title: "title2", provider: "Bar" },
@@ -180,9 +180,8 @@ test("title", () => {
       </PlayerProvider>
     );
 
-    expect(
-      screen.getByRole("heading", { name: `${title} via ${provider}` })
-    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: title })).toBeInTheDocument();
+    expect(screen.getByText(`via ${provider}`)).toBeInTheDocument();
     cleanup();
   });
 });

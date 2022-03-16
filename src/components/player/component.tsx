@@ -31,18 +31,18 @@ export const Component: React.VFC<_Props> = (props) => (
         />
       </div>
     )}
-    <h5 className="mt-3 mb-2 text-center fw-bold">
-      {props.player.title}{" "}
-      <small className="text-muted">via {props.player.provider}</small>
-    </h5>
-    <p className="text-center">
+    <section className="mt-3 mb-4 text-center">
+      <h1 className="h5 fw-bold">{props.player.title}</h1>
+      <p>via {props.player.provider}</p>
+    </section>
+    <div className="text-center">
       <Link href={props.backTo}>
         <a>Back to {props.backToText}</a>
       </Link>{" "}
-      <span className="mx-1 text-muted">or</span>{" "}
+      <span className="mx-1">or</span>{" "}
       <Link href="/">
         <a>Recent favorites</a>
       </Link>
-    </p>
+    </div>
   </div>
 );

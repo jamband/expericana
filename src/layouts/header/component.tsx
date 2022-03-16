@@ -4,17 +4,18 @@ import { DropdownHeader } from "~/components/dropdown-header";
 import { DropdownLink } from "~/components/dropdown-link";
 import { SearchForm } from "~/components/search-form";
 import { APP_NAME } from "~/constants/app";
+import styles from "./style.module.scss";
 import type { _Props } from "./types";
 
 export const Component: React.VFC<_Props> = (props) => (
-  <header>
+  <header className={styles.header}>
     <nav
       className="navbar navbar-expand-md navbar-dark bg-dark"
       aria-label="Header navigation"
     >
       <div className="container">
         <Link href="/">
-          <a className="navbar-brand">{APP_NAME}</a>
+          <a className="fw-bold navbar-brand">{APP_NAME}</a>
         </Link>
         <button
           className="navbar-toggler"

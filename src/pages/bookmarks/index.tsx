@@ -62,15 +62,20 @@ export default function View(props: Props) {
                   </LinkExternal>
                 </section>
                 <section className="mb-1">
-                  <span className="me-2">Country:</span>
-                  {bookmark.country}
+                  <span className="me-2 text-light">Country:</span>
+                  <Link
+                    key={index}
+                    href={`/bookmarks/countries/${bookmark.country}/pages/1`}
+                  >
+                    <a className="tag">{bookmark.country}</a>
+                  </Link>
                 </section>
                 <section className="mb-1">
-                  <span className="me-2">Links:</span>
+                  <span className="me-2 text-light">Links:</span>
                   <LinkBrandIcon link={bookmark.link} />
                 </section>
                 <section>
-                  <span className="me-2">Tags:</span>
+                  <span className="me-2 text-light">Tags:</span>
                   {bookmark.tags.map((tag, index) => (
                     <Link
                       key={index}
@@ -80,7 +85,7 @@ export default function View(props: Props) {
                     </Link>
                   ))}
                 </section>
-                <hr className="text-muted" />
+                <hr />
               </article>
             ))}
           </div>

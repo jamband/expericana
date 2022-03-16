@@ -35,7 +35,7 @@ export default function View(props: Props) {
   return (
     <Page title="">
       <h1 className="mb-2">
-        Recent <small className="text-muted">favorite tracks</small>
+        Recent <small className="fw-normal text-body">favorite tracks</small>
       </h1>
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-md-4">
         {props.tracks.map((track) => (
@@ -60,7 +60,7 @@ export default function View(props: Props) {
         ))}
       </div>
       <h1 className="mt-4 mb-2">
-        Search <small className="text-muted">by genres</small>
+        Search <small className="fw-normal text-body">by genres</small>
       </h1>
       {props.genres.map((genre, index) => (
         <Link href={`/tracks/genres/${genre}/pages/1`} key={index}>
@@ -71,7 +71,7 @@ export default function View(props: Props) {
         <Link href="/tracks">
           <a>Go to Tracks</a>
         </Link>
-        <span className="mx-2 text-muted">or</span>
+        <span className="mx-2">or</span>
         <Link href="/playlists">
           <a>
             Playlists{" "}

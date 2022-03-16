@@ -62,22 +62,24 @@ export default function View(props: Props) {
                   </LinkExternal>
                 </section>
                 <section className="mb-1">
-                  <span className="me-2">Country:</span>
-                  {label.country}
+                  <span className="me-2 text-light">Country:</span>
+                  <Link href={`/labels/countries/${label.country}/pages/1`}>
+                    <a className="tag">{label.country}</a>
+                  </Link>
                 </section>
                 <section className="mb-1">
-                  <span className="me-2">Links:</span>
+                  <span className="me-2 text-light">Links:</span>
                   <LinkBrandIcon link={label.link} />
                 </section>
                 <section>
-                  <span className="me-2">Tags:</span>
+                  <span className="me-2 text-light">Tags:</span>
                   {label.tags.map((tag, index) => (
                     <Link key={index} href={`/labels/tags/${tag.name}/pages/1`}>
                       <a className="tag">{tag.name}</a>
                     </Link>
                   ))}
                 </section>
-                <hr className="text-muted" />
+                <hr />
               </article>
             ))}
           </div>
