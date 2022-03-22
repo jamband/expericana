@@ -11,7 +11,7 @@ export const Component: React.VFC<_Props> = (props) => (
       {props.showPlayerTitle ? (
         <div className="p-2 d-flex align-items-center justify-content-center">
           <Link href={props.playerUrl}>
-            <a className="py-2 px-1 text-light text-truncate">
+            <a className="ms-3 py-2 px-1 text-light text-truncate">
               {props.playerTitle}
             </a>
           </Link>
