@@ -60,7 +60,7 @@ export const Component: React.VFC<_Props> = (props) => (
             </Dropdown>
           </div>
         </div>
-        <SearchForm className="ms-auto d-none d-md-flex" />
+        <SearchForm className="ms-auto d-none d-md-flex ps-0 ps-md-2" />
       </div>
     </nav>
   </header>

@@ -67,11 +67,11 @@ export default function View(props: Props) {
               footer={track.created_at}
             >
               <Link href={`/tracks/providers/${track.provider}/pages/1`}>
-                <a className="tag">{track.provider}</a>
+                <a className="mb-2 tag">{track.provider}</a>
               </Link>
               {track.genres.map((genre, index) => (
                 <Link key={index} href={`/tracks/genres/${genre.name}/pages/1`}>
-                  <a className="tag">{genre.name}</a>
+                  <a className="mb-2 tag">{genre.name}</a>
                 </Link>
               ))}
             </TrackCard>

@@ -48,11 +48,11 @@ export default function View(props: Props) {
               footer={track.created_at}
             >
               <Link href={`/tracks/providers/${track.provider}/pages/1`}>
-                <a className="tag">{track.provider}</a>
+                <a className="mb-2 tag">{track.provider}</a>
               </Link>
               {track.genres.map((genre, index) => (
                 <Link key={index} href={`/tracks/genres/${genre.name}/pages/1`}>
-                  <a className="tag">{genre.name}</a>
+                  <a className="mb-2 tag">{genre.name}</a>
                 </Link>
               ))}
             </TrackCard>
@@ -64,7 +64,7 @@ export default function View(props: Props) {
       </h1>
       {props.genres.map((genre, index) => (
         <Link href={`/tracks/genres/${genre}/pages/1`} key={index}>
-          <a className="tag">{genre}</a>
+          <a className="mb-2 tag">{genre}</a>
         </Link>
       ))}
       <div className="text-center pt-3 pb-4">
