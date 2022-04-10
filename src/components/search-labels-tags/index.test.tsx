@@ -1,7 +1,7 @@
 /** @jest-environment jsdom */
 import { render, screen } from "@testing-library/react";
 import { useRouter } from "next/router";
-import { useLabelsTags } from "~/hooks/query";
+import { useQuery } from "react-query";
 import "~/utils/fontawesome-mock";
 import { SearchLabelsTags } from ".";
 
@@ -9,12 +9,12 @@ jest.mock("next/router", () => ({
   useRouter: jest.fn(),
 }));
 
-jest.mock("~/hooks/query", () => ({
-  useLabelsTags: jest.fn(),
+jest.mock("react-query", () => ({
+  useQuery: jest.fn(),
 }));
 
 const router = useRouter as jest.Mock;
-const tags = useLabelsTags as jest.Mock;
+const tags = useQuery as jest.Mock;
 
 beforeEach(() => {
   router.mockReset();

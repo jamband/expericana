@@ -1,7 +1,7 @@
 /** @jest-environment jsdom */
 import { render, screen } from "@testing-library/react";
 import { useRouter } from "next/router";
-import { useBookmarksCountries } from "~/hooks/query";
+import { useQuery } from "react-query";
 import "~/utils/fontawesome-mock";
 import { SearchBookmarksCountries } from ".";
 
@@ -9,12 +9,12 @@ jest.mock("next/router", () => ({
   useRouter: jest.fn(),
 }));
 
-jest.mock("~/hooks/query", () => ({
-  useBookmarksCountries: jest.fn(),
+jest.mock("react-query", () => ({
+  useQuery: jest.fn(),
 }));
 
 const router = useRouter as jest.Mock;
-const countries = useBookmarksCountries as jest.Mock;
+const countries = useQuery as jest.Mock;
 
 beforeEach(() => {
   router.mockReset();

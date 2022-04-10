@@ -1,26 +1,19 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { useRef } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { Player } from "~/components/player";
 import { PlayerProvider } from "~/contexts/player";
+import { QueryClientProvider } from "~/contexts/query-client";
 import { Layout } from "~/layouts/layout";
 import { Loading } from "~/layouts/loading";
-import { RegisterFontAwesomeIcons } from "~/utils/fontawesome";
 import "~/styles/app.scss";
+import { RegisterFontAwesomeIcons } from "~/utils/fontawesome";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   RegisterFontAwesomeIcons();
 
-  const queryClientRef = useRef<QueryClient>();
-
-  if (!queryClientRef.current) {
-    queryClientRef.current = new QueryClient();
-  }
-
   return (
-    <QueryClientProvider client={queryClientRef.current}>
+    <QueryClientProvider dehydratedState={pageProps.dehydratedState}>
       <Head>
         <meta
           name="viewport"
